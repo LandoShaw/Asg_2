@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./style.scss"
+import { useState, useEffect } from 'react'
+import { createClient } from '@supabase/supabase-js';
+
+const supaUrl = 'https://cgsmvcmhbmmgvprycefa.supabase.co';
+const supaAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNnc212Y21oYm1tZ3ZwcnljZWZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA0NDM4MjYsImV4cCI6MjAyNjAxOTgyNn0.HGbpJ4CB3tNj_KvhRViM3a-9RhH_pPhS2aimD7_7fO8';
+const supabase = createClient(supaUrl, supaAnonKey);
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  // const [seasons, setSeasons] = useState([]);
+  // useEffect( () => { selectSeasons(); }, []);
+
+  // async function selectSeasons() {
+  //   const { data, error } = await supabase.from('seasons').select('*');
+  //   if (error) {
+  //   console.error('Error fetching seasons:', error);
+  //     return;
+  //   }
+  //   setSeasons(data);
+  // }
 
   return (
-    <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <button className="is-success is-outlined is-rounded is-large">
+    Our Button
+</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
   )
 }
+
+
+
+
 
 export default App
