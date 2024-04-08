@@ -11,12 +11,23 @@ export const globalContext = createContext();
 
 function App() {
 
-  // globally available current season
-  let [currentSeasonData, setCurrentSeasonData] = useState();
+  // 'global variables'
+  let [ currentSeasonData, setCurrentSeasonData ] = useState();
+  let [ faveDrivers, setFaveDrivers ] = useState();      // array with all of faveDrivers' data.
+  let [ faveConstructors, setFaveConstructors ] = useState();                 // array with all of faveConstructors' data.
+  let [ faveCircuits, setFaveCircuits ] = useState();                         // array with all of faveCircuits' data.
+  let [ selectedDriver, setSelectedDriver ] = useState();                     // for pop up info
+  let [ selectedConstructor, setSelectedConstructor ] = useState();
+  let [ selectedCircuit, setSelectedCircuit ] = useState();
 
   return (
     <div>
-      <globalContext.Provider value={{ supabase, currentSeasonData, setCurrentSeasonData }}> 
+      <globalContext.Provider 
+      value={{supabase, 
+        currentSeasonData, setCurrentSeasonData, 
+        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
+        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit
+        }}> 
         <Navbar></Navbar>
       </globalContext.Provider>
     </div>
