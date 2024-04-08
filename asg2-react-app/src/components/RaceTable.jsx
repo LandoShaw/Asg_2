@@ -14,6 +14,7 @@ const RaceTable = (props) => {
                 </thead>
                 <tbody>
                     <RaceItem round={1} circuit={"British Grand Prix"}/>
+                    <RaceItem round={2} circuit={"Italian Grand Prix"}/>
                 </tbody>
             </table>
         </div>

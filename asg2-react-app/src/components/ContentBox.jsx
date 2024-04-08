@@ -1,24 +1,16 @@
 import RaceTable from "./RaceTable"
+import InformationColumn from "./InformationColumn";
 
 const ContentBox = (props) => {
 
     return (
         <div className="columns is-2" >
-            <div className="column is-one-third has-background-primary">
+            <div className="column is-one-third">
                 <RaceTable/>
-                {/* <aside/>
-                <aside className="menu">
-                    <p className="menu-label">Races</p>
-                    <ul className="menu-list">
-                        <li><a>Rnd Circuit</a></li>
-                        <li><a><RaceListItem circuit={"Britsh Grand Prix"} round={1}/></a></li>
-                    </ul>
-                </aside> */}
             </div>
-
-            {/* <div className="column  has-background-primary-00">
-                <p>content</p>
-    </div> */}
+            <div className="column">
+                <InformationColumn/>
+            </div>
         </div>
     )
 }
