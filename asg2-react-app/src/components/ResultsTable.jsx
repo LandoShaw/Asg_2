@@ -4,6 +4,11 @@ import ResultItem from "./ResultItem";
 const ResultsTable = (props) => {
     return (
         <div>
+            <div>
+                <img/>
+                <img/>
+                <img/>
+            </div>
             <table className="table">
                 <thead>
                     <tr>
