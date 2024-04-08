@@ -1,3 +1,4 @@
+import ResultsTable from "./ResultsTable";
 import ConstructorsTable from "./ConstructorsTable";
 import DriversTable from "./DriversTable";
 import QualifyingTable from "./QualifyingTable";
@@ -25,7 +26,7 @@ const InformationColumn = (props) => {
     const renderResults = () => {
         return (
             <div className="columns">
-                <p><strong>results</strong></p>
+                <p><strong>Results</strong></p>
                 <p>Race Name, Round #, year, Circuit Name, Date, URL</p>
                 <div className="column">
                     <p>Qualifying</p>
@@ -33,6 +34,7 @@ const InformationColumn = (props) => {
                 </div>
                 <div className="column">
                     <p>Results</p>
+                    <ResultsTable/>
                 </div>
             </div>
         );
