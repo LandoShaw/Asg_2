@@ -23,8 +23,9 @@ function App() {
   // }
 
   return (
-    <div>
-      <ContentBox/>
+    <div className="main">
+      <Navbar/>
+      <ContentBox year={2023}/>
     </div>
   )
 }
