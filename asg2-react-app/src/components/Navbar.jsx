@@ -21,7 +21,7 @@ const Navbar = (props) => {
               </a>
         
               <a class="navbar-item">
-                Documentation
+                Seasons
               </a>
         
               <div class="navbar-item has-dropdown is-hoverable">
@@ -50,10 +50,10 @@ const Navbar = (props) => {
               <div class="navbar-item">
                 <div class="buttons">
                   <a class="button is-primary">
-                    <strong>Sign up</strong>
+                    <strong>Favorites</strong>
                   </a>
                   <a class="button is-light">
-                    Log in
+                    About
                   </a>
                 </div>
               </div>
