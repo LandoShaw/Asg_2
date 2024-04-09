@@ -1,5 +1,5 @@
 
-const ConstructersItem = (props) => {
+const ConstructorsItem = (props) => {
     const handleClickDriver = () => {
         alert("clicked results for " + props.name);
     }
@@ -14,4 +14,4 @@ const ConstructersItem = (props) => {
     );
 }
 
-export default ConstructersItem;
+export default ConstructorsItem;
