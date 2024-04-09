@@ -1,9 +1,10 @@
 import "./style.scss"
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect, createContext} from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Navbar from './components/Navbar.jsx';
 import ContentBox from "./components/ContentBox.jsx";
 import Login from "./components/login.jsx";
+import React from 'react';
 
 const supaUrl = 'https://gpguqnzzbamugsskjpce.supabase.co/';
 const supaAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwZ3Vxbnp6YmFtdWdzc2tqcGNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg2NDIxMDAsImV4cCI6MjAyNDIxODEwMH0.NrxelAdhbR2l2s91_rJ0leFtXcw-NzL2Z59PNAyivFg';

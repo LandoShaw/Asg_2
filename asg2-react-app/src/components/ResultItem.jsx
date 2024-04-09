@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { GlobalContext } from '../App';
+import React from 'react';
 
 const ResultItem = (props) => {
     let { handleDriverPopup, handleConstructorPopup

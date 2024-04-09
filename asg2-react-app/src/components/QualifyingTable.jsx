@@ -1,6 +1,7 @@
 import QualifyingItem from "./QualifyingItem";
 import { useState, useContext } from 'react';
 import { GlobalContext } from "../App";
+import React from 'react';
 
 const QualifyingTable = (props) => {
     let { raceQualifyingInformation

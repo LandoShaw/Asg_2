@@ -1,6 +1,7 @@
 import ConstructorsItem from "./ConstructorsItem";
-import { useState, useContext } from 'react';
+import { useState, useContext} from 'react';
 import { GlobalContext } from "../App";
+import React from 'react';
 
 const ConstructorsTable = (props) => {
     let { raceConstructorInformation

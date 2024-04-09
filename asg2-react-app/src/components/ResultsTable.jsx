@@ -2,6 +2,7 @@ import ResultItem from "./ResultItem";
 import ResultImages from "./ResultImages";
 import { useState, useContext } from 'react';
 import { GlobalContext } from "../App";
+import React from 'react';
 
 const ResultsTable = (props) => {
     let { raceResultInformation 

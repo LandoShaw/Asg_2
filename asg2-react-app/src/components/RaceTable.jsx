@@ -1,6 +1,7 @@
 import RaceItem from "./RaceItem";
 import { useState, useContext } from 'react';
 import { GlobalContext } from "../App";
+import React from 'react';
 
 const RaceTable = (props) => {
 

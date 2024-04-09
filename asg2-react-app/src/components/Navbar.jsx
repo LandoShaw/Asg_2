@@ -2,6 +2,7 @@
 // Brandon Kern, Landon Odishaw-Dyck
 import { useState, useContext } from 'react';
 import { GlobalContext } from '../App';
+import React from 'react';
 
 /*
 Functionality of This Components:
