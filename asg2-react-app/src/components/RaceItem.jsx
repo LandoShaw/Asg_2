@@ -110,7 +110,6 @@ const RaceItem = (props) => {
         selectDriverStandingForRaceCallAPI(props.data.raceId);
         selectQualifyingForRaceCallAPI(props.data.raceId);
         selectResultsForRaceCallAPI(props.data.raceId);
-        alert("clicked results for " + props.data.name);
     }
 
     const handleClickStandings = () => {
@@ -120,7 +119,6 @@ const RaceItem = (props) => {
         selectDriverStandingForRaceCallAPI(props.data.raceId);
         selectQualifyingForRaceCallAPI(props.data.raceId);
         selectResultsForRaceCallAPI(props.data.raceId);
-        alert("clicked standings for " + props.data.name);
     }
 
     return (
