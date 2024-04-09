@@ -1,7 +1,16 @@
-
 import ResultItem from "./ResultItem";
+import { useState, useContext } from 'react';
+import { GlobalContext } from "../App";
 
 const ResultsTable = (props) => {
+    let {supabase, 
+        currentSeasonData, setCurrentSeasonData, 
+        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
+        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
+        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
+        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+    } = useContext(GlobalContext);
+
     return (
         <div>
             <div>
@@ -20,8 +29,8 @@ const ResultsTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <ResultItem position={1} driver={"Max Verstappen"} constructor={"Reb Bull"} laps={46} points={25}/>
-                    <ResultItem position={2} driver={"Italian Grand Prix"} constructor={"Ferrari"} laps={46} points={18}/>
+                    {raceInformation2.map( m =>
+                                <ResultItem key={m.grid} data={m}/>)}
                 </tbody>
             </table>
         </div>

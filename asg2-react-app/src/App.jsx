@@ -4,34 +4,41 @@ import { createClient } from '@supabase/supabase-js';
 import Navbar from './components/Navbar.jsx';
 import ContentBox from "./components/ContentBox.jsx";
 
-const supaUrl = 'https://cgsmvcmhbmmgvprycefa.supabase.co';
-const supaAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNnc212Y21oYm1tZ3ZwcnljZWZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA0NDM4MjYsImV4cCI6MjAyNjAxOTgyNn0.HGbpJ4CB3tNj_KvhRViM3a-9RhH_pPhS2aimD7_7fO8';
+const supaUrl = 'https://gpguqnzzbamugsskjpce.supabase.co/';
+const supaAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwZ3Vxbnp6YmFtdWdzc2tqcGNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg2NDIxMDAsImV4cCI6MjAyNDIxODEwMH0.NrxelAdhbR2l2s91_rJ0leFtXcw-NzL2Z59PNAyivFg';
 const supabase = createClient(supaUrl, supaAnonKey);
 
-export const globalContext = createContext();
+export const GlobalContext = createContext();
 
 function App() {
 
   // 'global variables'
-  let [ currentSeasonData, setCurrentSeasonData ] = useState();
-  let [ faveDrivers, setFaveDrivers ] = useState();      // array with all of faveDrivers' data.
-  let [ faveConstructors, setFaveConstructors ] = useState();                 // array with all of faveConstructors' data.
-  let [ faveCircuits, setFaveCircuits ] = useState();                         // array with all of faveCircuits' data.
-  let [ selectedDriver, setSelectedDriver ] = useState();                     // for pop up info
-  let [ selectedConstructor, setSelectedConstructor ] = useState();
-  let [ selectedCircuit, setSelectedCircuit ] = useState();
+  let [ currentSeasonData, setCurrentSeasonData ] = useState([]);
+  let [ faveDrivers, setFaveDrivers ] = useState([]);      // array with all of faveDrivers' data.
+  let [ faveConstructors, setFaveConstructors ] = useState([]);                 // array with all of faveConstructors' data.
+  let [ faveCircuits, setFaveCircuits ] = useState([]);                         // array with all of faveCircuits' data.
+  let [ selectedDriver, setSelectedDriver ] = useState([]);                     // for pop up info
+  let [ selectedConstructor, setSelectedConstructor ] = useState([]);
+  let [ selectedCircuit, setSelectedCircuit ] = useState([]);
+  let [ infomationSide, setInformationSide] = useState(0);
+  let [ informationCircuit, setInformationCircuit] = useState([]);
+  let [ raceInformation1, setRaceInformation1] = useState([]);
+  let [ raceInformation2, setRaceInformation2] = useState([]);
+
 
   return (
     <div>
-      <globalContext.Provider 
+      <GlobalContext.Provider 
       value={{supabase, 
         currentSeasonData, setCurrentSeasonData, 
         faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
-        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit
+        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
+        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
+        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
         }}> 
         <Navbar></Navbar>
         <ContentBox year={2023}/>
-      </globalContext.Provider>
+      </GlobalContext.Provider>
     </div>
   )
 }

@@ -6,10 +6,11 @@ const ConstructorsItem = (props) => {
 
     return (
         <tr>
-            <th>{props.position}</th>
-            <td>{props.name}</td>
-            <td>{props.points}</td>
-            <td>{props.wins}</td>
+            {/* {console.log(props.data)} */}
+            <th>{props.data.position}</th>
+            <td>{props.data.constructors.name}</td>
+            <td>{props.data.points}</td>
+            <td>{props.data.wins}</td>
         </tr>
     );
 }

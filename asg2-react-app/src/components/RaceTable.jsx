@@ -1,18 +1,27 @@
 import RaceItem from "./RaceItem";
 import { useState, useContext } from 'react';
-import { globalContext } from "../App";
+import { GlobalContext } from "../App";
 
 const RaceTable = (props) => {
 
     let {supabase, 
         currentSeasonData, setCurrentSeasonData, 
         faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
-        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit
-        } = useContext(globalContext);
+        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
+        infomationSide, setInformationSide, informationCircuit, setInformationCircuit
+        } = useContext(GlobalContext);
+
+    const provideYear = () => {
+        if (currentSeasonData != 0) {
+            return currentSeasonData[0].year;
+        } else {
+            return 0;
+        }
+    }
 
     return (
         <div>
-            <p><strong>{currentSeasonData[0].year} Races</strong></p>
+            <h1><strong>{provideYear()} Races</strong></h1>
             <table className="table">
                 <thead>
                     <tr>
@@ -24,8 +33,7 @@ const RaceTable = (props) => {
                 </thead>
                 <tbody>
                     {currentSeasonData.map( m =>
-                        <RaceItem round={m.round} circuit={m.name}/>)}
-
+                        <RaceItem key={m.round} data={m}/>)}
                 </tbody>
             </table>
         </div>

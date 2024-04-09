@@ -1,6 +1,16 @@
 import QualifyingItem from "./QualifyingItem";
+import { useState, useContext } from 'react';
+import { GlobalContext } from "../App";
 
 const QualifyingTable = (props) => {
+    let {supabase, 
+        currentSeasonData, setCurrentSeasonData, 
+        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
+        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
+        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
+        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+    } = useContext(GlobalContext);
+
     return (
         <div>
             <table className="table">
@@ -15,8 +25,8 @@ const QualifyingTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <QualifyingItem position={1} driver={"max verstappen"} constrcuter={"Red Bull"} q1={"1:27:23"} q2={"1:23:23"} q3={"1:23:13"}/>
-                    <QualifyingItem position={2} driver={"joe random"} constructor={"Ferrari"} q1={"1:46:23"} q2={"1:23:23"} q3={"1:24:23"}/>
+                    {raceInformation1.map( m =>
+                            <QualifyingItem key={m.position} data={m}/>)}
                 </tbody>
             </table>
         </div>

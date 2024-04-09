@@ -2,47 +2,64 @@ import ResultsTable from "./ResultsTable";
 import ConstructorsTable from "./ConstructorsTable";
 import DriversTable from "./DriversTable";
 import QualifyingTable from "./QualifyingTable";
+import { useState, useContext } from 'react';
+import { GlobalContext } from "../App";
 
 const InformationColumn = (props) => {
-    const page = 2;
+    let {supabase, 
+        currentSeasonData, setCurrentSeasonData, 
+        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
+        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
+        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
+        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+        } = useContext(GlobalContext);
+
+
 
     const renderStanding = () => {
         return (
-            <div className="columns">
-                <p><strong>Standings</strong></p>
-                <p>After round 2</p> 
-                <div className="column">
-                    <p>Drivers</p>
-                    <DriversTable/>
-                </div>
-                <div className="column">
-                    <p>Constructors</p>
-                    <ConstructorsTable/>
-                </div>
-            </div>  
+            <div>  
+                <h1><strong>Standings</strong></h1>
+                <span>After round {informationCircuit.round}</span> 
+                <div className="columns">
+                    <div className="column">
+                        <h2>Drivers</h2>
+                        <DriversTable/>
+                    </div>
+                    <div className="column">
+                        <h2>Constructors</h2>
+                        <ConstructorsTable/>
+                    </div>
+                </div>  
+            </div>
+
         );
     }
 
     const renderResults = () => {
         return (
-            <div className="columns">
-                <p><strong>Results</strong></p>
-                <p>Race Name, Round #, year, Circuit Name, Date, URL</p>
-                <div className="column">
-                    <p>Qualifying</p>
-                    <QualifyingTable/>
-                </div>
-                <div className="column">
-                    <p>Results</p>
-                    <ResultsTable/>
+            <div>
+                <h1><strong>Results</strong></h1>
+                <span>{informationCircuit.name}, Round {informationCircuit.round}, {informationCircuit.year}, 
+                Circuit Name, {informationCircuit.date}, {informationCircuit.url}</span>
+                <div className="columns">
+                    <div className="column">
+                        <h2>Qualifying</h2>
+                        <QualifyingTable/>
+                    </div>
+                    <div className="column">
+                        <h2>Results</h2>
+                        <ResultsTable/>
+                    </div>
                 </div>
             </div>
+
         );
     }
 
-    if (page == 1) {
+    if (infomationSide == 1) {
         return renderStanding();
-    } else if (page == 2) {
+    } else if (infomationSide == 2) {
         return renderResults();
     } else {
         return (<div></div>);

@@ -1,7 +1,7 @@
 // source:   https://bulma.io/documentation/components/navbar/
 // Brandon Kern, Landon Odishaw-Dyck
 import { useState, useContext } from 'react';
-import { globalContext } from '../App';
+import { GlobalContext } from '../App';
 
 const Navbar = (props) => {
     
@@ -9,8 +9,10 @@ const Navbar = (props) => {
     let {supabase, 
         currentSeasonData, setCurrentSeasonData, 
         faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
-        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit
-        } = useContext(globalContext);
+        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
+        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
+        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+        } = useContext(GlobalContext);
     
     async function selectSeasonCallAPI(year) {
         const { data, error } = await supabase
@@ -110,7 +112,7 @@ const Navbar = (props) => {
                 </header>
                 <section className="modal-card-body">
 
-                    <div class="box">
+                    <div className="box">
                     <h2><strong> Favorite Drivers </strong></h2>
                     <ul>
                         <li>Item 1</li>
@@ -119,7 +121,7 @@ const Navbar = (props) => {
                     </ul>
                     </div>
 
-                    <div class="box">
+                    <div className="box">
                     <h2><strong> Favorite Constructors </strong></h2>
                     <ul>
                         <li>Item A</li>
@@ -128,7 +130,7 @@ const Navbar = (props) => {
                     </ul>
                     </div>
 
-                    <div class="box">
+                    <div className="box">
                     <h2><strong> Favorite Circuits </strong></h2>
                     <ul>
                         <li>Apple</li>
