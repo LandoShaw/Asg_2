@@ -27,7 +27,6 @@ const InformationColumn = (props) => {
                     </div>
                 </div>  
             </div>
-
         );
     }
 
@@ -35,8 +34,7 @@ const InformationColumn = (props) => {
         return (
             <div>
                 <h1><strong>Results</strong></h1>
-                <span>{informationCircuit.name}, Round {informationCircuit.round}, {informationCircuit.year}, 
-                Circuit Name, {informationCircuit.date}, {informationCircuit.url}</span>
+                <span>{informationCircuit.name}, Round {informationCircuit.round}, {informationCircuit.year}, {informationCircuit.circuits.name}, {informationCircuit.date}, <a href={informationCircuit.url}>link</a></span>
                 <div className="columns">
                     <div className="column">
                         <h2>Qualifying</h2>
@@ -48,7 +46,6 @@ const InformationColumn = (props) => {
                     </div>
                 </div>
             </div>
-
         );
     }
 

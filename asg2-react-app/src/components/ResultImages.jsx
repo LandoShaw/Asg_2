@@ -17,12 +17,12 @@ const ResultImages = (props) => {
                     </div>
                     <div className="column">
                         <img src="https://placehold.co/100x100"/>
-                        <p><strong>First</strong></p>
+                        <p><strong>Second</strong></p>
                         <p>{raceResultInformation[1].drivers.forename} {raceResultInformation[1].drivers.surname}</p>
                     </div>
                     <div className="column">
                         <img src="https://placehold.co/100x100"/>
-                        <p><strong>First</strong></p>
+                        <p><strong>Third</strong></p>
                         <p>{raceResultInformation[2].drivers.forename} {raceResultInformation[2].drivers.surname}</p>
                     </div>  
                 </div>

@@ -11,7 +11,7 @@ const ResultsTable = (props) => {
         if (raceResultInformation != null) {
             return (
                 raceResultInformation.map( m =>
-                    <ResultItem key={m.grid} data={m}/>)
+                    <ResultItem key={m.resultId} data={m}/>)
             )
         } else {
             return ;

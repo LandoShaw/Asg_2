@@ -127,6 +127,7 @@ const RaceItem = (props) => {
 
     return (
         <tr>
+            {console.log(props.data)}
             <th>{props.data.round}</th>
             <td>{props.data.name}</td>
             <td><button onClick={handleClickResults} className="button is-link is-small">Results</button></td>

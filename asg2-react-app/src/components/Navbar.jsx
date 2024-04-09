@@ -12,7 +12,7 @@ const Navbar = (props) => {
     async function selectSeasonCallAPI(year) {
         const { data, error } = await supabase
         .from('races')
-        .select()
+        .select(`*, circuits(name)`)
         .eq('year', year)
         .order('round', { ascending: true } );
         if (error) {
