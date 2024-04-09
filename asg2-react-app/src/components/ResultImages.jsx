@@ -8,7 +8,6 @@ const ResultImages = (props) => {
 
     const checkNull = () => {
         if (raceResultInformation.length > 3) {
-            console.log(raceResultInformation)
             return (
                 <div className="columns">
                     <div className="column">
