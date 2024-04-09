@@ -4,7 +4,7 @@ import { GlobalContext } from '../App';
 
 
 const Login = () => {
-    let {login, setLogin
+    let {setLogin
     } = useContext(GlobalContext);
 
     return(
@@ -17,7 +17,7 @@ const Login = () => {
         <input
           value={"email"}
           placeholder="Enter your email here"
-          className={'inputBox'}
+        //   className={'inputBox'}
         />
         <label className="errorLabel">{""}</label>
       </div>
@@ -26,7 +26,7 @@ const Login = () => {
         <input
           value={"password"}
           placeholder="Enter your password here"
-          className={'inputBox'}
+        //   className={'inputBox'}
         />
         <label className="errorLabel">{""}</label>
       </div>

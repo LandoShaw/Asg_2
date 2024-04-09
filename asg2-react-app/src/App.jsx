@@ -131,8 +131,14 @@ function App() {
 
 
   if (login) {
-    return (<Login/>);
+    return (
+    <div>
+      <Login/>
+    </div>
+    
+  );
   } else {
+    console.log("login: " + login)
     return (
       <div>
         <GlobalContext.Provider 
