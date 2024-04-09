@@ -1,14 +1,18 @@
+import { useState, useContext } from 'react';
+import { GlobalContext } from '../App';
+
 
 const ConstructorsItem = (props) => {
-    const handleClickDriver = () => {
-        alert("clicked results for " + props.name);
-    }
+    let { handleConstructorPopup
+    } = useContext(GlobalContext);
 
     return (
         <tr>
             {/* {console.log(props.data)} */}
             <th>{props.data.position}</th>
-            <td>{props.data.constructors.name}</td>
+            <td>
+                <a onClick={() => handleConstructorPopup(props.data.constructors.constructorId)} > {props.data.constructors.name} </a>
+            </td>
             <td>{props.data.points}</td>
             <td>{props.data.wins}</td>
         </tr>

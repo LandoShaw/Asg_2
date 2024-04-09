@@ -6,7 +6,7 @@ import { useState, useContext } from 'react';
 import { GlobalContext } from "../App";
 
 const InformationColumn = (props) => {
-    let {infomationSide, informationCircuit
+    let {infomationSide, informationCircuit, handleCircuitPopup
         } = useContext(GlobalContext);
 
 
@@ -34,7 +34,10 @@ const InformationColumn = (props) => {
         return (
             <div>
                 <h1><strong>Results</strong></h1>
-                <span>{informationCircuit.name}, Round {informationCircuit.round}, {informationCircuit.year}, {informationCircuit.circuits.name}, {informationCircuit.date}, <a href={informationCircuit.url}>link</a></span>
+                <span>
+                    <p>{informationCircuit.name}, Round {informationCircuit.round}, {informationCircuit.year}</p>
+                    <p> <a onClick={() => handleCircuitPopup(informationCircuit.circuits.circuitId)}>{informationCircuit.circuits.name}</a> , {informationCircuit.date}, <a href={informationCircuit.url}>Wiki Url</a></p>
+                </span>
                 <div className="columns">
                     <div className="column">
                         <h2>Qualifying</h2>

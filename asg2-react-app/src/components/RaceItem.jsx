@@ -15,7 +15,7 @@ const RaceItem = (props) => {
         .from('driver_standing')
         .select(`
         driverStandingsId,
-        drivers (driverRef, code, forename, surname),
+        drivers (driverId, driverRef, code, forename, surname),
         races!inner(name, round, year, date),
         points, position, positionText, wins
         `)
@@ -40,7 +40,7 @@ const RaceItem = (props) => {
         .select(`
         constructorStandingsId,
         races!inner(name, round, year, date),
-        constructors(name, constructorRef, nationality),
+        constructors(constructorId, name, constructorRef, nationality),
         points, position, positionText, wins
         `)
         .eq('races.raceId', raceId)
@@ -63,9 +63,9 @@ const RaceItem = (props) => {
         .from('qualifying')
         .select(`
         qualifyId, number,
-        drivers (driverRef, code, forename, surname),
+        drivers (driverId, driverRef, code, forename, surname),
         races (name, round, year, date),
-        constructors (name, constructorRef, nationality),
+        constructors (constructorId, name, constructorRef, nationality),
         position, q1, q2, q3
         `)
         .eq('raceId', raceId)
@@ -89,9 +89,9 @@ const RaceItem = (props) => {
         .select(`
         resultId, number, grid, position, positionText, positionOrder, points, laps, time, milliseconds, fastestLap, rank, fastestLapTime, fastestLapSpeed,
         statusId, 
-        drivers(driverRef, code, forename, surname),
+        drivers(driverId, driverRef, code, forename, surname),
         races(raceId, name, round, year, date),
-        constructors(name, constructorRef, nationality)
+        constructors(constructorId, name, constructorRef, nationality)
         `)
         .eq('raceId', raceId)
         .order('grid', { ascending: true });
@@ -127,7 +127,6 @@ const RaceItem = (props) => {
 
     return (
         <tr>
-            {console.log(props.data)}
             <th>{props.data.round}</th>
             <td>{props.data.name}</td>
             <td><button onClick={handleClickResults} className="button is-link is-small">Results</button></td>

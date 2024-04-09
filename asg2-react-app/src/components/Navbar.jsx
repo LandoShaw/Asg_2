@@ -3,16 +3,31 @@
 import { useState, useContext } from 'react';
 import { GlobalContext } from '../App';
 
+/*
+Functionality of This Components:
+
+Anything that is strictly to do with the navbar.  
+Some functionality of the navbar is put into 'app.jsx' 
+because it must interact with popups/modals, which are 
+triggered throughout the program, not just from the navbar.
+
+*/
+
 const Navbar = (props) => {
     
     // grab globalContext data
-    let {supabase, setCurrentSeasonData
-        } = useContext(GlobalContext);
+    // grab globalContext data
+    let {supabase, 
+      currentSeasonData, setCurrentSeasonData, 
+      faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
+      selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
+      handleAboutClick, handleFaveClick, handleDriverPopup
+      } = useContext(GlobalContext);
     
     async function selectSeasonCallAPI(year) {
         const { data, error } = await supabase
         .from('races')
-        .select(`*, circuits(name)`)
+        .select(`*, circuits(circuitId, name)`)
         .eq('year', year)
         .order('round', { ascending: true } );
         if (error) {
@@ -32,15 +47,15 @@ const Navbar = (props) => {
         selectSeasonCallAPI(year);
     };
     
-    const [aboutModalVisible, setAboutModalVisible] = useState(false);
-    const handleAboutClick = () => {
-        setAboutModalVisible(!aboutModalVisible);
-    }
+    // const [aboutModalVisible, setAboutModalVisible] = useState(false);
+    // const handleAboutClick = () => {
+    //     setAboutModalVisible(!aboutModalVisible);
+    // }
 
-    const [faveModalVisible, setFaveModalVisible] = useState(false);
-    const handleFaveClick = () => {
-        setFaveModalVisible(!faveModalVisible);
-    }
+    // const [faveModalVisible, setFaveModalVisible] = useState(false);
+    // const handleFaveClick = () => {
+    //     setFaveModalVisible(!faveModalVisible);
+    // }
 
 
 
@@ -54,111 +69,53 @@ const Navbar = (props) => {
     // ))}
 
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
-          <div className="navbar-brand">
-            <p className="navbar-item">
-             Season
-            </p>
-        
-            <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-
-          <div id="navbarBasicExample" className="navbar-menu">
-            <div className="navbar-start">
-              
-              <div className="navbar-item has-dropdown is-hoverable">
-                <a className="navbar-link">
-                  {currentSelection}
-                </a>
-
-                <div className="navbar-dropdown" style={{ maxHeight: '200px', overflowY: 'scroll'}}>
-                {years.map((year) => (
-                    <a key={year} className="navbar-item" onClick={() => handleDropdownClick(year.toString())}> {year} </a>
-                ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="navbar-end">
-              <div className="navbar-item">
-                <div className="buttons">
-                  <a className="button is-light" onClick={() => handleFaveClick()}>
-                    <strong>Favorites</strong>
-                  </a>
-                  <a className="button is-light" onClick={() => handleAboutClick()}>
-                  <strong>About</strong>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className={`modal ${faveModalVisible ? 'is-active' : ''}`}>
-            <div className="modal-background" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}></div>
-            <div className="modal-card" style={{ width: '70%' }}> {/* Adjust the width as needed */}
-                <header className="modal-card-head">
-                    <p className="modal-card-title"> <strong>Favorites</strong></p>
-                    <button className="delete" aria-label="close" onClick={() => handleFaveClick()}></button>
-                </header>
-                <section className="modal-card-body">
-
-                    <div className="box">
-                    <h2><strong> Favorite Drivers </strong></h2>
-                    <ul>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                    </ul>
-                    </div>
-
-                    <div className="box">
-                    <h2><strong> Favorite Constructors </strong></h2>
-                    <ul>
-                        <li>Item A</li>
-                        <li>Item B</li>
-                        <li>Item C</li>
-                    </ul>
-                    </div>
-
-                    <div className="box">
-                    <h2><strong> Favorite Circuits </strong></h2>
-                    <ul>
-                        <li>Apple</li>
-                        <li>Orange</li>
-                        <li>Banana</li>
-                    </ul>
-                    </div>
-
-                </section>
-            </div>
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
+          <p className="navbar-item">
+           Season
+          </p>
+      
+          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
 
+        <div id="navbarBasicExample" className="navbar-menu">
+          <div className="navbar-start">
+            
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">
+                {currentSelection}
+              </a>
 
-
-          <div className={`modal ${aboutModalVisible ? 'is-active' : ''}`}>
-            <div className="modal-background" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}></div>
-                <div className="modal-card">
-                    <header className="modal-card-head">
-                        <p className="modal-card-title"> <strong>Formula 1 Statistics</strong></p>
-                        <button className="delete" aria-label="close" onClick={() => handleAboutClick()}></button>
-                    </header>
-                    <section className="modal-card-body">
-                        <strong>This website can be used to access Formula 1 statistics for drivers, constructors, circuits, and more for the years 1950-2024.
-                        The database is implemented using Supabase, while the front-end uses React and Bulma. </strong>
-                        Developers: Brandon Kern, Landon Odishaw-Dyck. 
-                        GitHub: https://github.com/LandoShaw/Asg_2
-                    </section>
-                </div>
+              <div className="navbar-dropdown" style={{ maxHeight: '200px', overflowY: 'scroll'}}>
+              {years.map((year) => (
+                  <a key={year} className="navbar-item" onClick={() => handleDropdownClick(year.toString())}> {year} </a>
+              ))}
+              </div>
             </div>
+          </div>
 
-        </nav>
-        
-        )
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+                <a className="button is-light" onClick={() => handleFaveClick()}>
+                  <strong>Favorites</strong>
+                </a>
+                <a className="button is-light" onClick={() => handleAboutClick()}>
+                <strong>About</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </nav>
+      
+      )
 
     }
     

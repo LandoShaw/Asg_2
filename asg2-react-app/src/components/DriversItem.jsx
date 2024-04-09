@@ -1,13 +1,16 @@
-
+import { useState, useContext } from 'react';
+import { GlobalContext } from '../App';
 const DriversItem = (props) => {
-    const handleClickDriver = () => {
-        alert("clicked results for " + props.name);
-    }
+
+    let {handleDriverPopup
+    } = useContext(GlobalContext);
 
     return (
         <tr>
             <th>{props.data.position}</th>
-            <td>{props.data.drivers.forename} {props.data.drivers.surname}</td>
+            <td>
+                <a onClick={() => handleDriverPopup(props.data.drivers.driverId)} > {props.data.drivers.forename} {props.data.drivers.surname}</a>
+            </td>
             <td>{props.data.points}</td>
             <td>{props.data.wins}</td>
         </tr>
