@@ -1,8 +1,18 @@
 import RaceItem from "./RaceItem";
+import { useState, useContext } from 'react';
+import { globalContext } from "../App";
 
 const RaceTable = (props) => {
+
+    let {supabase, 
+        currentSeasonData, setCurrentSeasonData, 
+        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
+        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit
+        } = useContext(globalContext);
+
     return (
         <div>
+            <p><strong>{currentSeasonData[0].year} Races</strong></p>
             <table className="table">
                 <thead>
                     <tr>
@@ -13,8 +23,9 @@ const RaceTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <RaceItem round={1} circuit={"British Grand Prix"}/>
-                    <RaceItem round={2} circuit={"Italian Grand Prix"}/>
+                    {currentSeasonData.map( m =>
+                        <RaceItem round={m.round} circuit={m.name}/>)}
+
                 </tbody>
             </table>
         </div>
