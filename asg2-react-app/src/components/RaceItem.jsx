@@ -4,12 +4,9 @@ import { GlobalContext } from "../App";
 
 const RaceItem = (props) => {
 
-    let {supabase, 
-        currentSeasonData, setCurrentSeasonData, 
-        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
-        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
-        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
-        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+    let {supabase, setInformationSide, setInformationCircuit,
+        setraceDriverInformation, setRaceConstructorInformation, 
+        setraceQualifyingInformation, setraceResultInformation
         } = useContext(GlobalContext);
 
     async function selectDriverStandingForRaceCallAPI(raceId) {
@@ -31,7 +28,7 @@ const RaceItem = (props) => {
             console.log("Did not find the requested data")
         } else {
             console.log(data);
-            setRaceInformation1(data);
+            setraceDriverInformation(data);
         }
     }
     
@@ -54,7 +51,7 @@ const RaceItem = (props) => {
             console.log("Did not find the requested data")
         } else {
             console.log(data);
-            setRaceInformation2(data);
+            setRaceConstructorInformation(data);
         }
     }
 
@@ -78,7 +75,7 @@ const RaceItem = (props) => {
             console.log("Did not find the requested data")
         } else {
             console.log(data);
-            setRaceInformation1(data);
+            setraceQualifyingInformation(data);
         }
     }
     
@@ -102,15 +99,17 @@ const RaceItem = (props) => {
             console.log("Did not find the requested data")
         } else {
             console.log(data);
-            setRaceInformation2(data);
+            setraceResultInformation(data);
         }
     }
 
     const handleClickResults = () => {
         setInformationSide(2);
         setInformationCircuit(props.data);
+        selectConstructorStandingForRaceCallAPI(props.data.raceId);
+        selectDriverStandingForRaceCallAPI(props.data.raceId);
         selectQualifyingForRaceCallAPI(props.data.raceId);
-        selectResultsForRaceCallAPI(props.data.raceId)
+        selectResultsForRaceCallAPI(props.data.raceId);
         alert("clicked results for " + props.data.name);
     }
 
@@ -119,6 +118,8 @@ const RaceItem = (props) => {
         setInformationCircuit(props.data);
         selectConstructorStandingForRaceCallAPI(props.data.raceId);
         selectDriverStandingForRaceCallAPI(props.data.raceId);
+        selectQualifyingForRaceCallAPI(props.data.raceId);
+        selectResultsForRaceCallAPI(props.data.raceId);
         alert("clicked standings for " + props.data.name);
     }
 

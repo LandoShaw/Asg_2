@@ -3,12 +3,7 @@ import { useState, useContext } from 'react';
 import { GlobalContext } from "../App";
 
 const ResultsTable = (props) => {
-    let {supabase, 
-        currentSeasonData, setCurrentSeasonData, 
-        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
-        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
-        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
-        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+    let { raceResultInformation 
     } = useContext(GlobalContext);
 
     return (
@@ -29,7 +24,7 @@ const ResultsTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {raceInformation2.map( m =>
+                    {raceResultInformation.map( m =>
                                 <ResultItem key={m.grid} data={m}/>)}
                 </tbody>
             </table>

@@ -22,8 +22,10 @@ function App() {
   let [ selectedCircuit, setSelectedCircuit ] = useState([]);
   let [ infomationSide, setInformationSide] = useState(0);
   let [ informationCircuit, setInformationCircuit] = useState([]);
-  let [ raceInformation1, setRaceInformation1] = useState([]);
-  let [ raceInformation2, setRaceInformation2] = useState([]);
+  let [ raceDriverInformation, setraceDriverInformation] = useState([]);
+  let [ raceConstructorInformation, setRaceConstructorInformation] = useState([]);
+  let [ raceQualifyingInformation, setraceQualifyingInformation] = useState([]);
+  let [ raceResultInformation, setraceResultInformation] = useState([]);
 
 
   return (
@@ -34,7 +36,8 @@ function App() {
         faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
         selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
         infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
-        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+        raceDriverInformation, setraceDriverInformation, raceConstructorInformation, setRaceConstructorInformation, 
+        raceQualifyingInformation, setraceQualifyingInformation, raceResultInformation, setraceResultInformation
         }}> 
         <Navbar></Navbar>
         <ContentBox year={2023}/>

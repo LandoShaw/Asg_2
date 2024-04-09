@@ -3,12 +3,7 @@ import { useState, useContext } from 'react';
 import { GlobalContext } from "../App";
 
 const ConstructorsTable = (props) => {
-    let {supabase, 
-        currentSeasonData, setCurrentSeasonData, 
-        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
-        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
-        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
-        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+    let { raceConstructorInformation
     } = useContext(GlobalContext);
 
     return (
@@ -23,7 +18,7 @@ const ConstructorsTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {raceInformation2.map( m =>
+                    {raceConstructorInformation.map( m =>
                             <ConstructorsItem key={m.position} data={m}/>)}
                 </tbody>
             </table>

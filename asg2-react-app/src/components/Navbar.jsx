@@ -6,12 +6,7 @@ import { GlobalContext } from '../App';
 const Navbar = (props) => {
     
     // grab globalContext data
-    let {supabase, 
-        currentSeasonData, setCurrentSeasonData, 
-        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
-        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
-        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
-        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+    let {supabase, setCurrentSeasonData
         } = useContext(GlobalContext);
     
     async function selectSeasonCallAPI(year) {

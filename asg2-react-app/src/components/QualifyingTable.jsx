@@ -3,12 +3,7 @@ import { useState, useContext } from 'react';
 import { GlobalContext } from "../App";
 
 const QualifyingTable = (props) => {
-    let {supabase, 
-        currentSeasonData, setCurrentSeasonData, 
-        faveCircuits, setFaveCircuits, faveConstructors, setFaveConstructors, faveDrivers, setFaveDrivers,
-        selectedDriver, setSelectedDriver, selectedConstructor, setSelectedConstructor, selectedCircuit, setSelectedCircuit,
-        infomationSide, setInformationSide, informationCircuit, setInformationCircuit,
-        raceInformation1, setRaceInformation1, raceInformation2, setRaceInformation2
+    let { raceQualifyingInformation
     } = useContext(GlobalContext);
 
     return (
@@ -25,7 +20,7 @@ const QualifyingTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {raceInformation1.map( m =>
+                    {raceQualifyingInformation.map( m =>
                             <QualifyingItem key={m.position} data={m}/>)}
                 </tbody>
             </table>
