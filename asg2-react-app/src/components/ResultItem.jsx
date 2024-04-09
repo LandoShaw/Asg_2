@@ -8,6 +8,7 @@ const ResultItem = (props) => {
 
     return (
         <tr>
+            {console.log(props.data)}
             <th>{props.data.grid}</th>
             <td>{props.data.drivers.forename} {props.data.drivers.surname}</td>
             <td>{props.data.constructors.name}</td>

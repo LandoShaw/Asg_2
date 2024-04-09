@@ -6,6 +6,17 @@ const DriversTable = (props) => {
     let { raceDriverInformation
     } = useContext(GlobalContext);
 
+    const checkNull = () => {
+        if (raceDriverInformation != null) {
+            return (
+                raceDriverInformation.map( m =>
+                    <DriversItem key={m.position} data={m}/>)
+            )
+        } else {
+            return ;
+        }
+    }
+
     return (
         <div>
             <table className="table">
@@ -18,8 +29,7 @@ const DriversTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {raceDriverInformation.map( m =>
-                            <DriversItem key={m.position} data={m}/>)}
+                    {checkNull()}
                 </tbody>
             </table>
         </div>

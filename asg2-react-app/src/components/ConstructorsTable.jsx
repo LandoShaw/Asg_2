@@ -6,6 +6,17 @@ const ConstructorsTable = (props) => {
     let { raceConstructorInformation
     } = useContext(GlobalContext);
 
+    const checkNull = () => {
+        if (raceConstructorInformation != null) {
+            return (
+                raceConstructorInformation.map( m =>
+                    <ConstructorsItem key={m.position} data={m}/>)
+            )
+        } else {
+            return ;
+        }
+    }
+
     return (
         <div>
             <table className="table">
@@ -18,8 +29,7 @@ const ConstructorsTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {raceConstructorInformation.map( m =>
-                            <ConstructorsItem key={m.position} data={m}/>)}
+                    {checkNull()}
                 </tbody>
             </table>
         </div>

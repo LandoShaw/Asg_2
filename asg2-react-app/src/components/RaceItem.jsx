@@ -10,6 +10,7 @@ const RaceItem = (props) => {
         } = useContext(GlobalContext);
 
     async function selectDriverStandingForRaceCallAPI(raceId) {
+        setraceDriverInformation([]);
         const {data, error} = await supabase
         .from('driver_standing')
         .select(`
@@ -27,12 +28,13 @@ const RaceItem = (props) => {
         if (data.length === 0 ) {
             console.log("Did not find the requested data")
         } else {
-            console.log(data);
+            // console.log(data);
             setraceDriverInformation(data);
         }
     }
     
     async function selectConstructorStandingForRaceCallAPI(raceId) {
+        setRaceConstructorInformation([]);
         const {data, error} = await supabase
         .from('constructor_standing')
         .select(`
@@ -50,12 +52,13 @@ const RaceItem = (props) => {
         if (data.length === 0 ) {
             console.log("Did not find the requested data")
         } else {
-            console.log(data);
+            // console.log(data);
             setRaceConstructorInformation(data);
         }
     }
 
     async function selectQualifyingForRaceCallAPI(raceId) {
+        setraceQualifyingInformation([]);
         const {data, error} = await supabase
         .from('qualifying')
         .select(`
@@ -74,12 +77,13 @@ const RaceItem = (props) => {
         if (data.length === 0 ) {
             console.log("Did not find the requested data")
         } else {
-            console.log(data);
+            // console.log(data);
             setraceQualifyingInformation(data);
         }
     }
     
     async function selectResultsForRaceCallAPI(raceId) {
+        setraceResultInformation([]);
         const {data, error} = await supabase
         .from('results')
         .select(`
@@ -98,7 +102,7 @@ const RaceItem = (props) => {
         if (data.length === 0 ) {
             console.log("Did not find the requested data")
         } else {
-            console.log(data);
+            // console.log(data);
             setraceResultInformation(data);
         }
     }

@@ -22,7 +22,7 @@ const RaceTable = (props) => {
                 <thead>
                     <tr>
                         <th>Rnd</th>
-                        <th>Circuit</th>
+                        <th>Race</th>
                         <th></th>
                         <th></th>
                     </tr>

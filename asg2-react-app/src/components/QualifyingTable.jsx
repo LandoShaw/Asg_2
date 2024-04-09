@@ -6,6 +6,17 @@ const QualifyingTable = (props) => {
     let { raceQualifyingInformation
     } = useContext(GlobalContext);
 
+    const checkNull = () => {
+        if (raceQualifyingInformation != null) {
+            return (
+                raceQualifyingInformation.map( m =>
+                    <QualifyingItem key={m.position} data={m}/>)
+            )
+        } else {
+            return ;
+        }
+    }
+
     return (
         <div>
             <table className="table">
@@ -20,8 +31,7 @@ const QualifyingTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {raceQualifyingInformation.map( m =>
-                            <QualifyingItem key={m.position} data={m}/>)}
+                    {checkNull()}
                 </tbody>
             </table>
         </div>
